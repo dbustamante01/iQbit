@@ -11,6 +11,7 @@ app.use(
     changeOrigin: true,
     headers: {
       referer: process.env.QBIT_HOST || 'http://localhost:8080',
+      origin: process.env.QBIT_HOST || 'http://localhost:8080',
     },
   })
 );

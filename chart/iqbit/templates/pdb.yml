@@ -1,0 +1,17 @@
+{{- $pdb := .Values.podDisruptionBudget }}
+{{- if $pdb.enabled }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "iqbit.fullname" . }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "iqbit.selectorLabels" . | nindent 6 }}
+  {{- with $pdb.minAvailable }}
+  minAvailable: {{ . }}
+  {{- end }}
+  {{- with $pdb.maxUnavailable }}
+  maxUnavailable: {{ . }}
+  {{- end }}
+{{- end -}}

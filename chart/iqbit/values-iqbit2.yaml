@@ -1,0 +1,6 @@
+deployment:
+  env:
+    - name: QBIT_HOST
+      value: https://torrent2-atl.polycom.io
+    - name: STANDALONE_SERVER_PORT
+      value: "{{ .Values.service.port }}"
